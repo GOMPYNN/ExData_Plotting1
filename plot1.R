@@ -17,9 +17,6 @@ unzip ("./data/household_power_consumption.zip", exdir = "./data")
 totalData <- read.table("./data/household_power_consumption.txt", header = TRUE, sep = ";",
                 stringsAsFactors = FALSE, na.strings = "?" )
 
-# To prevent Dutch week day names.
-Sys.setlocale("LC_TIME", "English")
-
 totalData$Date <- as.Date(totalData$Date, format="%d/%m/%Y")
 
 #Select the required rows

@@ -17,9 +17,6 @@ unzip ("./data/household_power_consumption.zip", exdir = "./data")
 totalData <- read.table("./data/household_power_consumption.txt", header = TRUE, sep = ";",
                         stringsAsFactors = FALSE, na.strings = "?" )
 
-# To prevent Dutch week day names.
-Sys.setlocale("LC_TIME", "English")
-
 totalData$Date <- as.Date(totalData$Date, format="%d/%m/%Y")
 
 #Select the required rows
@@ -37,6 +34,8 @@ neededData <- select(neededData, Datetime, Date:Sub_metering_3)
 
 # Create plot4
 # With copy the legend does not look right
+# Note: compared to plot 1, 2 and 3 some x-labs, y-labs 
+# are different as is the legend box of 3.
 png("plot4.png", width = 480, height = 480)
 
 par(mfrow = c(2, 2), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0) )
